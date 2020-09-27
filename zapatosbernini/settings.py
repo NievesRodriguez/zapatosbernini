@@ -24,6 +24,7 @@ SECRET_KEY = 'xo@fm08!2t=2^n@^q*%p_km0^4_x!+7b^$ffpprrv&3fl2rt%3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+#DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -37,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
+    'catalogo',
+    
 ]
 
 MIDDLEWARE = [
@@ -54,7 +58,9 @@ ROOT_URLCONF = 'zapatosbernini.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            'catalogo/templates',
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -62,6 +68,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.i18n',
+                'django.core.context_processors.media',
+                'django.core.context_processors.request'
             ],
         },
     },
@@ -75,8 +84,12 @@ WSGI_APPLICATION = 'zapatosbernini.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'bernini',
+       'USER': 'root',
+    'PASSWORD': '',
+    'HOST': 'localhost',
+    'OPTIONS': {}
     }
 }
 
@@ -103,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-es'
 
 TIME_ZONE = 'UTC'
 
@@ -118,3 +131,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+STATIC_ROOT = os.path.join(BASE_DIR, "catalogo/static")
+MEDIA_URL='/media/'
+
+#Envio de emails
+
+EMAIL_HOST = 'smtp.bernini.es'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'info@bernini.es'
+EMAIL_HOST_PASSWORD = 'passInfo'
