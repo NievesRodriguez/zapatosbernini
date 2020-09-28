@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'catalogo',
+    'pedidos',
     
 ]
 
@@ -60,6 +61,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             'catalogo/templates',
+            'pedidos/templates',
             ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -68,9 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.core.context_processors.i18n',
-                'django.core.context_processors.media',
-                'django.core.context_processors.request'
+                
             ],
         },
     },
@@ -141,3 +141,5 @@ EMAIL_HOST = 'smtp.bernini.es'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'info@bernini.es'
 EMAIL_HOST_PASSWORD = 'passInfo'
+
+

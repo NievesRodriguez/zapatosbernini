@@ -1,0 +1,3 @@
+username: Admin
+mail: admin@bernini.es
+pass: ad123ber
