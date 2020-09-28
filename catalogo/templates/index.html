@@ -1,0 +1,50 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+   
+     <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div style="margin-top:50px;">
+
+            <h3>Bienvenido a Bernini</h3>
+            <p>Acceda a su zona de cliente</p>
+            <div class="row">
+            	<div class="col-md-4"></div>
+            	<div class="col-md-4">
+            		{% if userExists == False %}
+				        <div class="row">
+				        	<div class="col-md-12 col-xs-12 alert-login" >
+				        		<div class="alert alert-danger">
+				        			El usuario o la contraseña son incorrectos, vuelva a intentarlo
+				        		</div>
+				        	</div>
+				        </div>
+				    {% endif %}
+            		<form action="login" method="POST">{% csrf_token %}
+						<div class="form-group">
+						    <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Usuario">
+						    
+						</div>
+						<div class="form-group">
+						    <input type="password" class="form-control" name="password" placeholder="Contraseña">
+						</div>
+						
+						<button type="submit" class="btn btn-primary">Login</button>
+					</form>     
+					
+					<small class="form-text text-muted">Usuario: nieves@bernini.es</small>
+					<small class="form-text text-muted">Contraseña: Nieves01</small>
+            	</div>
+            	<div class="col-md-4"></div>
+            </div>
+			
+        </div>
+    </div>
+     
+{% endblock %}
+
+{% block js %}
+ 
+{% endblock %}

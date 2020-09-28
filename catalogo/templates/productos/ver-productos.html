@@ -1,0 +1,71 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+<!--  -->
+   
+     <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div style="margin-top:50px;">
+			<div class="row" style="">
+				<div class="col-md-1"></div>
+            	<main class="col-md-7" id="items">
+            		<div class="row">
+            			{% for producto in productos %}
+            			<div class="col-md-4">
+            				<div class="card" id="{{producto.id}}" style="width: 18rem;">
+								  <img src="{% static 'img' %}/{{producto.image}}" class="card-img-top" alt="">
+								  <div class="card-body">
+								  		<h5 class="card-title">{{producto.name}}</h5>
+									    <p class="card-text">{{producto.description}}</p>
+									    <p class="card-text price">{{producto.price}} &euro;</p>
+									    <a href="#" class="btn btn-primary additem" data-id="{{producto.id}}" data-name="{{producto.name}}" data-price="{{producto.price}}">Añadir al carrito</a>
+								  </div>
+							</div>
+            			</div>
+	            		
+					{% endfor %} 
+            		</div>
+            		  
+					
+            	</main>
+            	<aside class="col-sm-3">
+	                <h2>Carrito</h2>
+	                <!-- Elementos del carrito -->
+	                <ul id="carrito" class="list-group"></ul>
+	                <hr>
+	                <!-- Precio total -->
+	                <p class="text-right">Total: <span id="total"></span> &euro;</p>
+	            </aside>
+            	<div class="col-md-1"></div>
+			
+			
+			
+			
+			
+			
+			
+				
+			
+        </div>
+        
+        <div class="row">
+        	<div class="col-md-8"></div>
+        	<div class="col-md-4">
+        		<a href="#" class="btn btn-primary sendOrder" data-id="" data-name="" data-price="">Finalizar pedido</a>
+        	</div>
+        </div>
+    </div>
+</div>
+
+
+<script src="{% static 'js/bernini/productos.js' %}"></script>
+	
+{% endblock %}
+ 
+
+ 	
+ 
